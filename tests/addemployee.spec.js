@@ -11,7 +11,7 @@ test('Verify add employee', async ({ page }) => {
   await page.getByRole('textbox', { name: 'Username' }).fill(logindata.username);
   await page.getByRole('textbox', { name: 'Password' }).click();
   await page.getByRole('textbox', { name: 'Password' }).fill(logindata.password);
-  await page.getByRole('button', { name: 'Login' }).click();
+  await page.getByRole('button', { name: 'Login' }).click(); 
   await expect(page.locator('#app')).toContainText('Time at Work');
   await page.getByRole('link', { name: 'PIM' }).click();
   await page.getByRole('link', { name: 'Add Employee' }).click();
