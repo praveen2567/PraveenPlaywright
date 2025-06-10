@@ -1,12 +1,12 @@
 import {test, expect} from '@playwright/test';
 
-import logindata from "../tests/testData/login.json"
+import logindata from "../testData/login.json"
 
-import data from "../tests/testData/addjobtitle.json"
+import data from "../testData/addjobtitle.json"
 
-test("Login with valid credentials", async ({page}) => {
+test("Verify Add Job Title with valid inputs", async ({page}) => {
     // Actions
-    await page.goto("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
+    await page.goto("/web/index.php/auth/login");
 
     await page.locator("input[name='username']").fill(logindata.username);
 
@@ -15,7 +15,7 @@ test("Login with valid credentials", async ({page}) => {
     await page.locator("button[type='submit']").click();
 
     // Assertions - verification point min 1 assertion in your test
-    await expect(page).toHaveURL("https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index");
+    await expect(page).toHaveURL("/web/index.php/dashboard/index");
 
     await page.locator('a[href="/web/index.php/admin/viewAdminModule"]').click(); 
 
@@ -31,6 +31,6 @@ test("Login with valid credentials", async ({page}) => {
 
     await page.locator('button[type="submit"]').click()
 
-    await expect(page).toHaveURL('https://opensource-demo.orangehrmlive.com/web/index.php/admin/viewSystemUsers')
+    await expect(page).toHaveURL('/web/index.php/admin/viewJobTitleList')
 
-})
+});
