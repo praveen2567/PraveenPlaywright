@@ -56,7 +56,9 @@ test("Verify login with invalid username and invalid password", async ({page}) =
     await page.locator("button[type='submit']").click();
 
     // Assertions - verification point min 1 assertion in your test
-    await expect(page.locator("//p[text()='Invalid credentials']")).toBeVisible();   
+    await expect(page.locator("//p[text()='Invalid credentials']")).toBeVisible();
+    
+    await page.close()
     
 
 })

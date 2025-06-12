@@ -6,7 +6,7 @@
     "fullyParallel": true,
     "globalSetup": null,
     "globalTeardown": null,
-    "globalTimeout": 0,
+    "globalTimeout": 3600000,
     "grep": {},
     "grepInvert": null,
     "maxFailures": 0,
@@ -43,22 +43,6 @@
         "metadata": {
           "actualWorkers": 1
         },
-        "id": "Microsoft Edge",
-        "name": "Microsoft Edge",
-        "testDir": "/Users/praveenkumar/Desktop/learnplaywrightb30/tests",
-        "testIgnore": [],
-        "testMatch": [
-          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
-        ],
-        "timeout": 60000
-      },
-      {
-        "outputDir": "/Users/praveenkumar/Desktop/learnplaywrightb30/test-results",
-        "repeatEach": 1,
-        "retries": 0,
-        "metadata": {
-          "actualWorkers": 1
-        },
         "id": "Google Chrome",
         "name": "Google Chrome",
         "testDir": "/Users/praveenkumar/Desktop/learnplaywrightb30/tests",
@@ -73,19 +57,19 @@
     "updateSnapshots": "missing",
     "updateSourceMethod": "3way",
     "version": "1.52.0",
-    "workers": 1,
+    "workers": 4,
     "webServer": null
   },
   "suites": [
     {
-      "title": "Admin/addworkshifts.spec.js",
-      "file": "Admin/addworkshifts.spec.js",
+      "title": "PIM/ENV(files)/addemp.spec.js",
+      "file": "PIM/ENV(files)/addemp.spec.js",
       "column": 0,
       "line": 0,
       "specs": [
         {
-          "title": "Verify Add Work Shifts with valid inputs",
-          "ok": true,
+          "title": "Verify add employee with valid inputs",
+          "ok": false,
           "tags": [],
           "tests": [
             {
@@ -96,25 +80,65 @@
               "projectName": "Google Chrome",
               "results": [
                 {
-                  "workerIndex": 8,
+                  "workerIndex": 1,
                   "parallelIndex": 0,
-                  "status": "passed",
-                  "duration": 21493,
-                  "errors": [],
+                  "status": "failed",
+                  "duration": 5540,
+                  "error": {
+                    "message": "Error: locator.fill: value: expected string, got undefined",
+                    "stack": "Error: locator.fill: value: expected string, got undefined\n    at /Users/praveenkumar/Desktop/learnplaywrightb30/tests/PIM/ENV(files)/addemp.spec.js:7:59",
+                    "location": {
+                      "file": "/Users/praveenkumar/Desktop/learnplaywrightb30/tests/PIM/ENV(files)/addemp.spec.js",
+                      "column": 59,
+                      "line": 7
+                    },
+                    "snippet": "\u001b[0m \u001b[90m  5 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m'/web/index.php/auth/login'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m  6 |\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m  7 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'textbox'\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[32m'Username'\u001b[39m })\u001b[33m.\u001b[39mfill(process\u001b[33m.\u001b[39menv\u001b[33m.\u001b[39m\u001b[33mORG_USERNAME\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                           \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m  8 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'textbox'\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[32m'Password'\u001b[39m })\u001b[33m.\u001b[39mfill(process\u001b[33m.\u001b[39menv\u001b[33m.\u001b[39m\u001b[33mORG_PASSWORD\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m  9 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'button'\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[32m'Login'\u001b[39m })\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m \n \u001b[90m 10 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'#app'\u001b[39m))\u001b[33m.\u001b[39mtoContainText(\u001b[32m'Time at Work'\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/Users/praveenkumar/Desktop/learnplaywrightb30/tests/PIM/ENV(files)/addemp.spec.js",
+                        "column": 59,
+                        "line": 7
+                      },
+                      "message": "Error: locator.fill: value: expected string, got undefined\n\n\u001b[0m \u001b[90m  5 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m'/web/index.php/auth/login'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m  6 |\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m  7 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'textbox'\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[32m'Username'\u001b[39m })\u001b[33m.\u001b[39mfill(process\u001b[33m.\u001b[39menv\u001b[33m.\u001b[39m\u001b[33mORG_USERNAME\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                           \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m  8 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'textbox'\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[32m'Password'\u001b[39m })\u001b[33m.\u001b[39mfill(process\u001b[33m.\u001b[39menv\u001b[33m.\u001b[39m\u001b[33mORG_PASSWORD\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m  9 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'button'\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[32m'Login'\u001b[39m })\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m \n \u001b[90m 10 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'#app'\u001b[39m))\u001b[33m.\u001b[39mtoContainText(\u001b[32m'Time at Work'\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[2m    at /Users/praveenkumar/Desktop/learnplaywrightb30/tests/PIM/ENV(files)/addemp.spec.js:7:59\u001b[22m"
+                    }
+                  ],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2025-06-10T10:11:24.548Z",
+                  "startTime": "2025-06-12T03:49:20.587Z",
                   "annotations": [],
-                  "attachments": []
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/Users/praveenkumar/Desktop/learnplaywrightb30/test-results/PIM-ENV(files)-addemp-Verify-add-employee-with-valid-inputs-Google-Chrome/test-failed-1.png"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/praveenkumar/Desktop/learnplaywrightb30/test-results/PIM-ENV(files)-addemp-Verify-add-employee-with-valid-inputs-Google-Chrome/video.webm"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/Users/praveenkumar/Desktop/learnplaywrightb30/test-results/PIM-ENV(files)-addemp-Verify-add-employee-with-valid-inputs-Google-Chrome/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/Users/praveenkumar/Desktop/learnplaywrightb30/tests/PIM/ENV(files)/addemp.spec.js",
+                    "column": 59,
+                    "line": 7
+                  }
                 }
               ],
-              "status": "expected"
+              "status": "unexpected"
             }
           ],
-          "id": "e172e33b84cccc4255b8-321bfb9e34b7e93d7b5a",
-          "file": "Admin/addworkshifts.spec.js",
-          "line": 7,
+          "id": "1d85ad727446ccc6f431-65e39f652a0c8a52b405",
+          "file": "PIM/ENV(files)/addemp.spec.js",
+          "line": 4,
           "column": 5
         }
       ]
@@ -122,11 +146,11 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2025-06-10T10:11:23.830Z",
-    "duration": 22711.601999999955,
-    "expected": 1,
+    "startTime": "2025-06-12T03:49:19.761Z",
+    "duration": 6807.125,
+    "expected": 0,
     "skipped": 0,
-    "unexpected": 0,
+    "unexpected": 1,
     "flaky": 0
   }
 }

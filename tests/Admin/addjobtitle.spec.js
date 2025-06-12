@@ -25,9 +25,12 @@ test("Verify Add Job Title with valid inputs", async ({page}) => {
 
     await page.locator('button[class="oxd-button oxd-button--medium oxd-button--secondary"]').click();
 
-    await page.locator("(//label[normalize-space(text())='Job Title']/following::input)[1]").fill(data.jobtitle)
 
-    await page.locator("//textarea[@placeholder='Type description here']").fill(data.jobDescription)
+    let r = (Math. random () + 1). toString(36). substring(7);
+
+    await page.locator("(//label[normalize-space(text())='Job Title']/following::input)[1]").fill(data.jobtitle+r)
+
+    await page.locator("//textarea[@placeholder='Type description here']").fill(data.jobDescription+r)
 
     await page.locator('button[type="submit"]').click()
 

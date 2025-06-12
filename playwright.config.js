@@ -1,5 +1,6 @@
 // @ts-check
 import { defineConfig, devices } from '@playwright/test';
+require('dotenv').config()
 
 /**
  * Read environment variables from file.
@@ -13,6 +14,7 @@ import { defineConfig, devices } from '@playwright/test';
  * @see https://playwright.dev/docs/test-configuration
  */
 export default defineConfig({
+  globalTimeout : 60 * 60 * 1000, //3600000
   timeout: 60000, // default 30sec
   expect: {
     timeout: 30000, // by default 5sec
@@ -35,8 +37,9 @@ export default defineConfig({
     headless : true,
     baseURL : "https://opensource-demo.orangehrmlive.com",
     screenshot : "only-on-failure",
+    video : "retain-on-failure",
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: 'on-first-retry',
+    trace: 'on',
   },
 
   /* Configure projects for major browsers */
@@ -67,13 +70,16 @@ export default defineConfig({
     // },
 
     /* Test against branded browsers. */
-    {
-      name: 'Microsoft Edge',
-      use: { ...devices['Desktop Edge'], channel: 'msedge' },
-    },
+    // {
+    //   name: 'Microsoft Edge',
+    //   use: { ...devices['Desktop Edge'], channel: 'msedge' },
+    // },
     {
       name: 'Google Chrome',
-      use: { ...devices['Desktop Chrome'], channel: 'chrome' },
+      use: { ...devices['Desktop Chrome'], channel: 'chrome',
+        // viewport: { width: 375, height: 667},
+      },
+       
     },
   ],
 
