@@ -1,16 +1,22 @@
 import {test, expect} from '@playwright/test';
 
-import logindata from "../testData/login.json"
+// import logindata from "../testData/login.json"
 
 import data from "../testData/addjobcategories.json";
 
 test("Verify Add Job Categories with valid inputs", async ({page}) => {
+
+   const creds = {
+        username : "Admin",
+        password : "admin123"
+    }
+
     // Actions
     await page.goto("/web/index.php/auth/login");
 
-    await page.locator("input[name='username']").fill(logindata.username);
+    await page.locator("input[name='username']").fill(creds.username);
 
-    await page.locator("input[name='password']").fill(logindata.password);
+    await page.locator("input[name='password']").fill(creds.password);
 
     await page.locator("button[type='submit']").click();
 

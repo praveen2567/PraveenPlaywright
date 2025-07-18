@@ -1,0 +1,1 @@
+[{"uid":"4a48c496f5a2fba4","name":"Verify login with valid creds","time":{"start":1752231753292,"stop":1752231757095,"duration":3803},"status":"passed","severity":"normal"},{"uid":"663c6c547d6c2a0","name":"Verify login valid username invalid password","time":{"start":1752231759461,"stop":1752231760885,"duration":1424},"status":"failed","severity":"normal"}]

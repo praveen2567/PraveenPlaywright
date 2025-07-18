@@ -27,23 +27,37 @@ export default defineConfig({
   /* Retry on CI only */
   retries: process.env.CI ? 2 : 1, //any test cases fail we run one more time just give 1 like that
   /* Opt out of parallel tests on CI. */
-  workers: process.env.CI ? 1 : 4, // how many browser instances to open parallel purpose
+  workers: process.env.CI ? 1 : 1, // how many browser instances to open parallel purpose
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: [['html'], ['dot'],['json', {outputFile: 'results.json'}]],
+  reporter: [['html'],["allure-playwright"]],
+  // reporter: [['html'], ['dot'],['json', {outputFile: 'results.json'}]],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
     // baseURL: 'http://localhost:3000',
-    headless : true,
+    headless : false,
     baseURL : "https://opensource-demo.orangehrmlive.com",
-    screenshot : "only-on-failure",
-    video : "retain-on-failure",
+    screenshot : "on",
+    video: "on",
+    trace : 'on',
+    
+    // video : "retain-on-failure",
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: 'on',
+    // trace: 'on',
   },
 
   /* Configure projects for major browsers */
+  // set up login.setup.js - one time
   projects: [
+      
+    {
+      name: "setup",
+      testMatch: /.*\.setup\.js/,
+      use: {
+          ...devices['Desktop Chrome'],
+          channel: 'chrome',
+      },
+    },
     // {
     //   name: 'chromium',
     //   use: { ...devices['Desktop Chrome'] },
@@ -76,13 +90,26 @@ export default defineConfig({
     // },
     {
       name: 'Google Chrome',
-      use: { ...devices['Desktop Chrome'], channel: 'chrome',
-        // viewport: { width: 375, height: 667},
+      //dependencies: ["setup"],
+      use: {
+        ...devices['Desktop Chrome'], 
+        channel: 'chrome',
+        //storageState: '.auth/user.json',
+        // viewport: { width: 375, height: 667 },
       },
-       
-    },
-  ],
+    }
+  
 
+
+    // {
+    //   name: 'Google Chrome',
+    //   use: { ...devices['Desktop Chrome'], channel: 'chrome',
+    //     viewport: { width: 1280, height: 720},
+    //   }
+       
+    // },
+
+  ],
   /* Run your local dev server before starting the tests */
   // webServer: {
   //   command: 'npm run start',

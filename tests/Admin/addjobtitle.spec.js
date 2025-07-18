@@ -1,6 +1,5 @@
 import {test, expect} from '@playwright/test';
 
-import logindata from "../testData/login.json"
 
 import data from "../testData/addjobtitle.json"
 
@@ -8,9 +7,9 @@ test("Verify Add Job Title with valid inputs", async ({page}) => {
     // Actions
     await page.goto("/web/index.php/auth/login");
 
-    await page.locator("input[name='username']").fill(logindata.username);
+    await page.locator("input[name='username']").fill(process.env.ORG_USERNAME);
 
-    await page.locator("input[name='password']").fill(logindata.password);
+    await page.locator("input[name='password']").fill(process.env.ORG_PASSWORD);
 
     await page.locator("button[type='submit']").click();
 

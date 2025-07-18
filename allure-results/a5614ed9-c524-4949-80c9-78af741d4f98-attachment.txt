@@ -1,0 +1,4 @@
+URL Launched
+Username Entered
+Password Entered
+Click on login button

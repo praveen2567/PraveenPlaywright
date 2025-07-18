@@ -1,16 +1,18 @@
 import {test, expect} from '@playwright/test';
 
-import logindata from "../testData/login.json"
+// import logindata from "../testData/login.json"
 
 import data from "../testData/addempstatus.json";
 
-test("Verify Add Emp Status with valid inputs", async ({page}) => {
+test("Verify Add Emp Status with valid inputs",{tag : "@smoke"}, async ({page}) => {
     // Actions
     await page.goto("/web/index.php/auth/login");
 
-    await page.locator("input[name='username']").fill(logindata.username);
+    const creds = ["Admin", "admin123"]
 
-    await page.locator("input[name='password']").fill(logindata.password);
+    await page.locator("input[name='username']").fill(creds[0]);
+
+    await page.locator("input[name='password']").fill(creds[1]);
 
     await page.locator("button[type='submit']").click();
 
